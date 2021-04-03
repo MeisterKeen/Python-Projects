@@ -26,5 +26,6 @@ c = Concrete() # instantiate an object
 c.abstractery() # call the abstract method defined in the child
 c.anotherMethod() # call the method defined in the parent.
 
-
- # I think I kinda-sorta get how this would be theoretically useful.
+ # Wow! I was totally over-thinking this.
+ # I think I kinda-sorta get how this would be useful, but I'll need to
+ # practice with it to really get it.
