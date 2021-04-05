@@ -1,24 +1,27 @@
-import os
+import os, time, shutil
 import tkinter as ik
 from tkinter import *
 from tkinter import filedialog
 
+sourcePath = ""
+destPath = ""
+
 def browseSource():
+    global sourcePath
     sourcePath = filedialog.askdirectory(initialdir = "C:/Users/",
                                          title = "Select a Directory")
     browse1.configure(text = sourcePath)
-    return sourcePath
 
 def browseDest():
+    global destPath
     destPath = filedialog.askdirectory(initialdir = "C:/Users/",
                                          title = "Select a Directory")
     browse2.configure(text = destPath)
-    return destPath
 
 def fileMover():
     files = os.listdir(sourcePath)
     for file in files:
-        filePath = sourcePath + file
+        filePath = sourcePath + "/" + file
         timeNow = time.time()
         fileTime = os.stat(filePath).st_mtime
         timeFloat = timeNow - fileTime
@@ -28,11 +31,11 @@ def fileMover():
     
 
 # Just laying out my GUI here:
-
 window = Tk()
 window.title('layout, woo')
 window.geometry("500x300")
 window.config(background = "lightgray")
+
 
 # First label, which should display the selected path
 select1 = Label(window,
@@ -43,6 +46,7 @@ select1 = Label(window,
 select1.grid(column = 0,
              row = 0)
 
+
 # Here's our BROWSE button, we'll attach the file-browser function here:
 browse1 = Button(window,
                  text = "Browse",
@@ -50,6 +54,7 @@ browse1 = Button(window,
                  width = 60, height = 2,)
 browse1.grid(column = 0,
              row = 1)
+
 
 # Second label
 select2 = Label(window,
@@ -67,21 +72,21 @@ browse2 = Button(window,
 browse2.grid(column = 0,
              row = 3)
 
+
 exitBtn = Button(window,
                  text = "Exit",
                  width = 20, height = 2,
-                 command = exit
-                 )
+                 command = exit)
 exitBtn.grid(column = 0,
              row = 4,
              sticky = NW,
              padx = (32,32), pady = (10))
 
+
 executeBtn = Button(window,
                     text = "Do the thing!",
                     width = 20, height = 2,
-                    command = fileMover
-                    )
+                    command = fileMover)
 executeBtn.grid(column = 0,
                 row = 4,
                 sticky = NE,
