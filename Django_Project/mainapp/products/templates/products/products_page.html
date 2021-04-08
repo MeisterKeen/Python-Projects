@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Royal Hotels{% endblock %}
+
+{% block header %}Welcome to the Royal Hotels!{% endblock %}
+
+{% block content %}
+
+{% for product in products %}
+    <ul>
+        <li>{{ product.name }}</li>
+    </ul>
+{% endfor %}
+
+
+
+
+{% endblock %}
