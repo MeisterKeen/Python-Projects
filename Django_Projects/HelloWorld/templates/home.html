@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block header %}Welcome to my World!{% endblock %}
+
+{% block content %}
+
+
+
+<div class="admin_panel">
+    <form name="profileForm" method="POST" action="">
+        <div class="formObject">
+            {% csrf_token %}
+            <label for="menu_id">Select a profile from the list to edit:</label>
+            <select id="menu_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
+            {% for profile in profiles %}
+            <option value="../{{ profiles.pk }}/Firstname/">{{ profiles.Firstname }}</option>
+            {% endfor %}
+            </select>
+            <div class="fromBtn_container">
+                <a href=""><button type="button" class="btn">Create New Profile</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
